@@ -4,9 +4,10 @@ const STORAGE_KEY = "kidsQuest.v2";
 // Remote JSON store (Option 3: shared data across devices on a static host like GitHub Pages).
 // 1. Create a free account at https://jsonbin.io
 // 2. Create a bin, paste the contents of kids-quest-data.json into it, save.
-// 3. Copy your bin ID and API key (X-Master-Key) here.
+// 3. Copy your bin ID and API key (X-Access-Key or X-Master-Key) here.
 const REMOTE_URL = "https://api.jsonbin.io/v3/b/6ab86189ffd5d1605332e50c"
-const REMOTE_KEY = "$2a$10$lL2ynmQYCZTDBo4jXQV.ne47EB5xvquZjYQpAcr4BCfNeMgEOzE6a"; // your JSONBin X-Master-Key / X-Access-Key
+const REMOTE_KEY = "$2a$10$lL2ynmQYCZTDBo4jXQV.ne47EB5xvquZjYQpAcr4BCfNeMgEOzE6a"; // your JSONBin X-Access-Key
+const remoteHeaders = (extra={}) => ({ ...extra, "X-Access-Key": REMOTE_KEY, "X-Master-Key": REMOTE_KEY });
 const remoteEnabled = () => !!REMOTE_URL;
 
 const defaultTasks = [
@@ -92,7 +93,7 @@ function saveState() {
   if (remoteEnabled()) {
     fetch(REMOTE_URL, {
       method: "PUT",
-      headers: { "Content-Type": "application/json", "X-Master-Key": REMOTE_KEY, "X-Bin-Versioning": "false" },
+      headers: remoteHeaders({ "Content-Type": "application/json", "X-Bin-Versioning": "false" }),
       body
     }).catch(() => {});
     return;
@@ -692,7 +693,7 @@ async function init() {
   let data = null;
   try {
     if (remoteEnabled()) {
-      const r = await fetch(REMOTE_URL + "/latest", { headers: { "X-Master-Key": REMOTE_KEY } });
+      const r = await fetch(REMOTE_URL + "/latest", { headers: remoteHeaders() });
       if (!r.ok) throw new Error("remote HTTP " + r.status);
       const payload = await r.json();
       data = payload.record || payload; // JSONBin wraps data in .record
