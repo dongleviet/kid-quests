@@ -7,7 +7,7 @@ const STORAGE_KEY = "kidsQuest.v2";
 // 3. Copy your bin ID and API key (X-Access-Key or X-Master-Key) here.
 const REMOTE_URL = "https://api.jsonbin.io/v3/b/6ab86189ffd5d1605332e50c"
 const REMOTE_KEY = "$2a$10$lL2ynmQYCZTDBo4jXQV.ne47EB5xvquZjYQpAcr4BCfNeMgEOzE6a"; // your JSONBin X-Access-Key
-const remoteHeaders = (extra={}) => ({ ...extra, "X-Access-Key": REMOTE_KEY, "X-Master-Key": REMOTE_KEY });
+const remoteHeaders = (extra={}) => ({ ...extra, "X-Access-Key": REMOTE_KEY });
 const remoteEnabled = () => !!REMOTE_URL;
 
 const defaultTasks = [
