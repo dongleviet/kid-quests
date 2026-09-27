@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#8b7cf6" />
+  <title>Kids Quest 🌈</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <button class="brand" id="homeBtn" aria-label="Go home">
+        <span class="brand-mascot">🐰</span>
+        <span>
+          <strong>Kids Quest</strong>
+          <small>Little missions, big smiles!</small>
+        </span>
+      </button>
+      <div class="top-actions">
+        <button class="parent-toggle" id="parentToggle">👨‍👩‍👧 Parent</button>
+      </div>
+    </header>
+
+    <main id="app"></main>
+
+    <footer>
+      <span>Made with ⭐ for happy little heroes</span>
+      <button id="exportBtn" class="text-btn">Export data</button>
+    </footer>
+  </div>
+
+  <div id="modalRoot"></div>
+
+  <!-- Embedded data: used when kids-quest-data.json can't be fetched (e.g. opening this file directly). -->
+  <script id="kidsQuestData" type="application/json">
+{
+  "parent": { "code": "910430" },
+  "kids": [
+    {
+      "id": "k1",
+      "name": "Tâm Anh",
+      "avatar": "🧒",
+      "password": "",
+      "points": 35,
+      "tasks": [
+        { "id": "t1", "name": "Ukelele practice", "description": "Practice for 30 minutes", "points": 10, "emoji": "🎵", "active": true },
+        { "id": "t2", "name": "Speak with AI", "description": "Practice for 30 minutes", "points": 10, "emoji": "💛", "active": true },
+        { "id": "t3", "name": "Done in morning", "description": "Get up & Brush teeth done before 6:30", "points": 5, "emoji": "📚", "active": true },
+        { "id": "t4", "name": "After meal", "description": "Place dishes and bowls in the dish basin", "points": 4, "emoji": "🧸", "active": true },
+        { "id": "t_sfq7o9d", "name": "Complete all lessons", "description": "Before 22:00", "points": 10, "emoji": "⭐", "active": true },
+        { "id": "t_s7p8tba", "name": "Tide up desk", "description": "After learning, tide up desk", "points": 2, "emoji": "⭐", "active": true },
+        { "id": "t_1i827nw", "name": "Go to bed early", "description": "Before 22:15", "points": 5, "emoji": "⭐", "active": true },
+        { "id": "t_ngu2j6w", "name": "Watch TV less", "description": "Less then 30 minutes", "points": 5, "emoji": "⭐", "active": true }
+      ],
+      "rewards": [
+        { "id": "r1", "name": "Ice cream", "description": "Choose your favorite flavor", "points": 50, "emoji": "🍦", "active": true },
+        { "id": "r2", "name": "Tivi time", "description": "30 extra minutes", "points": 100, "emoji": "📺", "active": true },
+        { "id": "r3", "name": "Secret Zodiac Card", "description": "1 card", "points": 250, "emoji": "🧸", "active": true },
+        { "id": "r4", "name": "Family outing", "description": "Choose a fun family activity", "points": 500, "emoji": "🌈", "active": true }
+      ],
+      "completions": [],
+      "redemptions": []
+    }
+  ]
+}
+  </script>
+  <script src="app.js"></script>
+</body>
+</html>
